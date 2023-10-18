@@ -16,10 +16,10 @@ public class JobApplication extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private NormalUser normalUser;
 
-    public void addUser(User user) {
-        this.user = user;
-        user.getJobApplications().add(this);
+    public void addNormalUser(NormalUser normalUser) {
+        this.normalUser = normalUser;
+        normalUser.getJobApplications().add(this);
     }
 }

@@ -16,10 +16,8 @@ public class JobPosting extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private Company company;
-
-    private String companyName;
+    @JoinColumn(name = "company_user_id")
+    private CompanyUser companyUser;
     private String country;
     private String region;
     private String position;
@@ -30,9 +28,8 @@ public class JobPosting extends BaseTimeEntity {
     private String jobDescription;
 
     @Builder
-    public JobPosting(String companyName, String country, String region,
+    public JobPosting(String country, String region,
                       String position, int compensation, String requiredSkill, String jobDescription) {
-        this.companyName = companyName;
         this.country = country;
         this.region = region;
         this.position = position;
@@ -41,14 +38,13 @@ public class JobPosting extends BaseTimeEntity {
         this.jobDescription = jobDescription;
     }
 
-    public void addCompany(Company company) {
-        this.company = company;
-        company.getJobPostings().add(this);
+    public void addCompanyUser(CompanyUser companyUser) {
+        this.companyUser = companyUser;
+        companyUser.getJobPostings().add(this);
     }
 
-    public void updateJobPosting(String companyName, String country, String region,
+    public void updateJobPosting(String country, String region,
                        String position, int compensation, String requiredSkill, String jobDescription) {
-        this.companyName = companyName;
         this.country = country;
         this.region = region;
         this.position = position;
