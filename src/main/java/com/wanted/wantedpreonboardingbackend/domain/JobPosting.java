@@ -43,13 +43,12 @@ public class JobPosting extends BaseTimeEntity {
         companyUser.getJobPostings().add(this);
     }
 
-    public void updateJobPosting(String country, String region,
-                       String position, int compensation, String requiredSkill, String jobDescription) {
-        this.country = country;
-        this.region = region;
-        this.position = position;
-        this.compensation = compensation;
-        this.requiredSkill = requiredSkill;
-        this.jobDescription = jobDescription;
+    public void updateJobPosting(JobPosting jobPosting) {
+        this.country = jobPosting.getCountry();
+        this.region = jobPosting.getRegion();
+        this.position = jobPosting.getPosition();
+        this.compensation = jobPosting.getCompensation();
+        this.requiredSkill = jobPosting.getRequiredSkill();
+        this.jobDescription = jobPosting.getJobDescription();
     }
 }
