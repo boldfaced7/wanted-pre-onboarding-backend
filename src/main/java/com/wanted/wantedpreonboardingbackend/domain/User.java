@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @DiscriminatorColumn(name = "dtype")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Entity
+@Entity(name = "users")
 public abstract class User extends BaseTimeEntity {
 
     @Id
