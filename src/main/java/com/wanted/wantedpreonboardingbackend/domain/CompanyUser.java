@@ -8,17 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@DiscriminatorValue("C")
 @Entity
-public class Company extends BaseTimeEntity {
+public class CompanyUser extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "company_id")
-    private Long id;
-
-    private String name;
-
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "companyUser")
     private List<JobPosting> jobPostings = new ArrayList<>();
 }

@@ -2,15 +2,15 @@ package com.wanted.wantedpreonboardingbackend.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@DiscriminatorColumn(name = "dtype")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
-public class User extends BaseTimeEntity {
+public abstract class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,5 @@ public class User extends BaseTimeEntity {
 
     private String name;
 
-    @OneToMany(mappedBy = "user")
-    private List<JobApplication> jobApplications = new ArrayList<>();
+
 }
